@@ -1,0 +1,74 @@
+<!-- <%= form_for @evaluation do |f| %>
+
+  <div class="form-group">
+    <label>Date</label>
+    <%= f.date_select :date, placeholder: "Date", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Color</label>
+    <%= f.number_field :number, placeholder: "Color", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Remark</label>
+    <%= f.text_area :remark, placeholder: "Remark", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %> -->
+
+<!-- <%= semantic_form_for @evaluation do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :author, :as => :select %>
+  <% end %>
+<% end %>
+
+<form...>
+  <fieldset>
+    <ol>
+      <li class='select'>
+        <label for="evaluation">evaluation</label>
+        <select id="evaluation" name="evaluation[evaluation]">
+          <option value=""></option>
+          <option value="1">Green</option>
+          <option value="2">Orange</option>
+          <option value="3">Red</option>
+        </select>
+      </li>
+    </ol>
+  </fieldset>
+</form> -->
+
+<%= form_for ([@student, @evaluation]) do |form| %>
+  <%= render "shared/error_messages", :target => @evaluation %>
+  
+  <div class="form-group">
+    <label>Date</label>
+    <%= f.date_select :date, placeholder: "Date", class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.radio_button(:rating, 1) %>
+    <%= form.label(:rating, "Green") %>
+
+
+    <%= form.radio_button(:rating, 2) %>
+    <%= form.label(:rating, "Yellow") %>
+
+
+    <%= form.radio_button(:rating, 3) %>
+    <%= form.label(:rating, "Red") %>
+  </div>
+  
+  <div class="form-group">
+    <label>Remark</label>
+    <%= f.text_area :remark, placeholder: "Remark", class: "form-control", rows:"8" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>
