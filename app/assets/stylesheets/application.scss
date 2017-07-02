@@ -16,3 +16,12 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+
+.navbar-brand img {
+  margin-top: -10px;
+  height: 40px;
+  width: auto;
+  -webkit-filter: saturate(100);
+  -webkit-filter: brightness(1);
+}
