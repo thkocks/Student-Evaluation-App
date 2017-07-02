@@ -34,11 +34,12 @@
 
 <% @evaluations.each do |evaluation| %>
 
+<!-- edit_batch_student_path(batch_id: @student.batch.id, id: @student.id), -->
 
   <div class="color-tiles">
 <% if evaluation.color == 1 %>
 <h5>
-  <%= link_to 'eval', edit_batch_student_evaluation_path(@student.id, evaluation.id), class:'btn-green' %></h5>
+  <%= link_to 'eval', edit_batch_student_evaluation_path(student_id: @student, id: evaluation), class:'btn-green' %></h5>
 <% else %>
 <% if evaluation.color == 2 %>
 <h5>

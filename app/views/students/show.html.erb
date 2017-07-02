@@ -22,7 +22,7 @@
   <%= link_to "Back", batches_path, class: "btn btn-default" %>
   <%= link_to "Evaluate", new_batch_student_evaluation_path(batch_id: @student.batch.id, student_id: @student.id), class: "btn btn-primary" %>
   <%= link_to "Edit", edit_batch_student_path(batch_id: @student.batch.id, id: @student.id), class: "btn btn-primary" %>
-  <%= link_to "Delete", batch_student_path(batch_id: @student.batch.id, id: @student.id), :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger" %>
+  <%= link_to "Delete student", batch_student_path(batch_id: @student.batch.id, id: @student.id), :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger" %>
 </p>
 
 </div>

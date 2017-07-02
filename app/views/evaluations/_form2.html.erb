@@ -1,0 +1,31 @@
+<%= form_for [@evaluation.student.batch, @evaluation.student, @evaluation] do |f| %>
+  <%= render "shared/error_messages", :target => @evaluation %>
+
+  <div class="f-group">
+    <label>Date</label>
+    <%= f.date_select :date, placeholder: "Date", class: "f-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.radio_button(:color, 1) %>
+    <%= f.label(:color, "Green") %>
+
+
+    <%= f.radio_button(:color, 2) %>
+    <%= f.label(:color, "Yellow") %>
+
+
+    <%= f.radio_button(:color, 3) %>
+    <%= f.label(:color, "Red") %>
+  </div>
+
+  <div class="f-group">
+    <label></label>
+    <%= f.text_area :remark, placeholder: "Remark", class: "f-control", rows:"8" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+    <%= link_to "Back", batch_student_path(batch_id: @student.batch.id, id: @student), class: "btn btn-default" %>
+  </div>
+<% end %>
