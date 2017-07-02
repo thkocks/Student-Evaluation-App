@@ -1,5 +1,7 @@
 {
   "name": "student-evaluation-app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "highcharts": "^5.0.12"
+  }
 }

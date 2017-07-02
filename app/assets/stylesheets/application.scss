@@ -15,13 +15,116 @@
  */
 
  @import "bootstrap-sprockets";
+ @import "bootstrp";
  @import "bootstrap";
+ @import "piechart";
+
 
 
 .navbar-brand img {
   margin-top: -10px;
   height: 40px;
   width: auto;
+}
+
+.navbar-brand img:focus,
+.navbar-brand img:hover {
   -webkit-filter: saturate(100);
-  -webkit-filter: brightness(1);
+  -webkit-filter: brightness(0);
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: black;
+}
+
+.nav.navbar-nav li a {
+   color: #fff;
+ }
+
+.nav.navbar-nav a:hover {
+ color: black;
+}
+
+.student-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.student-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 150px;
+  margin: 10px;
+  padding: 10px;
+  background-color: rgb(214, 31, 31);
+  border-width: 20px;
+  border-radius: 10px;
+}
+
+.student {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 128px;
+}
+
+.student-name a {
+  color: white;
+}
+
+.album {
+  min-height: 40rem;
+  /* Can be removed; just added for demo purposes */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #f7f7f7;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  float: left;
+  width: 148px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 2rem;
+  border: 20px;
+  background-color: lightgrey;
+  border-radius: 15px;
+}
+
+.card a {
+  color: black;
+}
+
+.card > img {
+  margin-bottom: .75rem;
+}
+
+.card-text {
+  font-size: 85%;
+  align-self: center;
+}
+
+.img-window {
+  img {
+    width: 128px;
+  }
+}
+
+.text-center {
+padding: 20px;
+margin-top: 20px;
 }
