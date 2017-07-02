@@ -50,43 +50,32 @@
  color: black;
 }
 
-.student-wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.student-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 150px;
-  margin: 10px;
-  padding: 10px;
-  background-color: rgb(214, 31, 31);
-  border-width: 20px;
-  border-radius: 10px;
-}
-
-.student {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 128px;
-}
-
-.student-name a {
-  color: white;
-}
-
 .album {
   min-height: 40rem;
   /* Can be removed; just added for demo purposes */
   padding-top: 3rem;
   padding-bottom: 3rem;
   background-color: #f7f7f7;
+}
+
+.batch-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  float: left;
+  width: 148px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 2rem;
+  border: 20px;
+  background-color: lightgrey;
+  border-radius: 15px;
+}
+
+.batch-card a {
+  color: black;
 }
 
 .card {
@@ -124,7 +113,30 @@
   }
 }
 
+.batch-title {
+  margin-top: -10px;
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  background-color: white;
+  border-width: 10px;
+  border-radius: 10px;
+}
+
 .text-center {
 padding: 20px;
 margin-top: 20px;
+}
+
+.batch-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.batch-container {
+  .batch-align {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 }
