@@ -62,6 +62,39 @@
 
 <div class="container">
 
+    <div><div class="pie" <div id="piechart" style="width: 400px; height: 200px;"> <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages': ['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          [
+            'Task', 'Hours per Day'
+          ],
+          [
+            'Green <%= @batch.percentages[:green] %> %', <%= @batch.percentages[:green] %>
+          ],
+          [
+            'Yellow <%= @batch.percentages[:yellow] %> %', <%= @batch.percentages[:yellow] %>
+          ],
+          ['Red <%= @batch.percentages[:red] %> %', <%= @batch.percentages[:red] %>]
+        ]);
+
+        var options = {
+          title: 'Batch evaluation statistics',
+          colors: ['rgb(96, 230, 75)', 'rgb(238, 231, 63)', 'rgb(233, 47, 47)']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </div>
+  </div>
+
     <div class="row">
 
     <% @students.each do |student| %>
@@ -80,6 +113,7 @@
           <%= link_to "Add a student", new_batch_student_url(@batch.id), class: "btn btn-primary" %>
           <%= link_to "Delete batch", batch_path(@batch.id), class: "btn btn-danger", data: { confirm: 'Are you sure?' }, method: :delete %>
       </p>
+
     </div>
   </div>
 </div>

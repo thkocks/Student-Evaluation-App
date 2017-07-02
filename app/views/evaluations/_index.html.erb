@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-9">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -10,12 +10,12 @@
         <div class="row">
           <div class="col-md-7">
             <% if evaluation.color == 1 %>
-            <h3> Green </h3>
+            <h5> Green </h5>
             <% else %>
               <% if evaluation.color == 2 %>
-                <h3> Yellow </h3>
+                <h5> Yellow </h5>
               <% else %>
-                <h3> Red </h3>
+                <h5> Red </h5>
               <% end %>
             <% end %>
             <h4><%= evaluation.date %></h4>
@@ -30,4 +30,27 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<% @evaluations.each do |evaluation| %>
+
+
+  <div class="color-tiles">
+<% if evaluation.color == 1 %>
+<h5>
+  <%= link_to 'eval', edit_batch_student_evaluation_path(@student.id, evaluation.id), class:'btn-green' %></h5>
+<% else %>
+<% if evaluation.color == 2 %>
+<h5>
+  <%= link_to 'eval', edit_batch_student_evaluation_path(@student.id, evaluation.id), class:'btn-yellow' %></h5>
+<% else %>
+<h5>
+  <%= link_to 'eval', edit_batch_student_evaluation_path(@student.id, evaluation.id), class:'btn-red' %></h5>
+<% end %>
+<% end %>
+
+<p><%=  evaluation.remark %></p>
+
 </div>
+
+<% end %>
