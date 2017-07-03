@@ -48,6 +48,8 @@
       <p>
           <%= link_to "Back", batches_path, class: "btn btn-default" %>
           <%= link_to "Question", batch_question_path(@batch), class: "btn btn-primary" %>
+          <!-- <%= link_to "Random", batch_randomstudentselect_path(@batch), class: "btn btn-primary" %> -->
+          <%= link_to "Random color", batch_randomfind_path(@batch), class: "btn btn-primary" %>
           <%= link_to "Add a student", new_batch_student_url(@batch.id), class: "btn btn-primary" %>
           <%= link_to "Delete batch", batch_path(@batch.id), class: "btn btn-danger", data: { confirm: 'Are you sure?' }, method: :delete %>
       </p>

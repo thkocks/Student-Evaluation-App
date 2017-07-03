@@ -7,8 +7,6 @@ class Batch < ApplicationRecord
 
   scope :order_by_id, -> { order(:id) }
 
-  include Randomable
-
   # def pick_color
   #   pick = rand(1..3)
   #     if
@@ -52,48 +50,22 @@ class Batch < ApplicationRecord
     students_collection.sample
   end
   #
-  def get_student
-    students_collection = []
-    random = rand(100)
-    students.each do |student|
-			student.evaluations.each do |evaluation|
-          if (random <= 17)
-            students_collection += [student.name] if evaluation.color == 1
-          elsif (random <= 67)
-            students_collection += [student.name] if evaluation.color == 3
-          else
-            students_collection += [student.name] if evaluation.color == 2
-          end
-        end
-      end
-    students_collection.sample
-  end
-
-  def get_random_student
-    random_color = []
-    random = rand(1..3)
-    students_collection = []
-    if (random == 1)
-      random_color << "Green"
-    elsif (random == 2)
-      random_color << "yellow"
-    else
-      random_color << "red"
-    end
-    students.each do |student|
-			student.evaluations.each do |evaluation|
-        if (random == evaluation.color)
-          student_collection += [student.name]
-        else break
-        end
-      end
-      students_collection.sample
-      random_color.sample
-    end
-
-
-
-  end
+  # def get_student
+  #   students_collection = []
+  #   students.each do |student|
+	# 		student.evaluations.each do |evaluation|
+  #       random = rand(100)
+  #         if (random <= 17)
+  #           students_collection += [student.name] if evaluation.color == 1
+  #         elsif (random <= 67)
+  #           students_collection += [student.name] if evaluation.color == 3
+  #         else
+  #           students_collection += [student.name] if evaluation.color == 2
+  #         end
+  #       end
+  #     end
+  #   students_collection.sample
+  # end
   #
   # def get_random_student
   #   rndm_stundents = []
@@ -104,14 +76,9 @@ class Batch < ApplicationRecord
   #     rndm_students.sample
   # end
 
-  # def random_find
-  #   students.order("RANDOM()").limit(1)
-  # end
-
-  # def random_find
-  #   students.limit(1).order("RANDOM()")
-  # end
-
+  def randomfind
+    students.order("RANDOM()").limit(1)
+  end
 
   def percentages
     colors = []
@@ -176,4 +143,5 @@ def pick_color
   else
     []
   end
+end
 end

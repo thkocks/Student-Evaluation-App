@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :batches do
     get :question
+    get :randomcolor
+    get :randomfind
+    get :randomstudentpick
+    get :randomstudentselect
     resources :students do
       resources :evaluations
     end

@@ -8,6 +8,8 @@ class Student < ApplicationRecord
 
   default_scope { order(first_name: :asc) }
 
+  include Randomable
+
   def name
     "#{first_name} #{last_name}"
   end
