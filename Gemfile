@@ -68,3 +68,7 @@ gem 'jquery-rails', '~> 4.3.1'
 gem 'devise', '~> 4.2'
 
 gem 'formtastic', '~> 3.0'
+
+gem 'chartkick'
+
+gem 'highcharts'

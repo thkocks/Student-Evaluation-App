@@ -45,14 +45,10 @@ class EvaluationsController < ApplicationController
 
     @evaluation.destroy
 
-
-    # @student = Student.find(params[:student_id])
-    # @batch = @student.batch
-    # @evaluation = @student.evaluations.find(params[:id])
-    # @evaluation.destroy
-
     redirect_to batch_student_path(batch_id: @evaluation.student.batch, id: @evaluation.student), notice: "Evaluation deleted"
   end
+
+private
 
   def evaluation_params
     params

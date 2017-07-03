@@ -1,36 +1,57 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">Batch <%= @batch.number %></div>
+<div class="container">
 
-  <div class="panel-body">
+    <div><div class="pie" <div id="piechart" style="width: 400px; height: 200px;"> <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages': ['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-    <p>Start date: <%= @batch.start_date %></p>
-    <p>End date: <%= @batch.end_date %></p>
+      function drawChart() {
 
-    <div>
-		  <p>Percentage Green: <%= @batch.percentages[:green] %></p>
-		  <p>Percentage Yellow: <%= @batch.percentages[:yellow] %></p>
-		  <p>Percentage Red: <%= @batch.percentages[:red] %></p>
-    </div>
+        var data = google.visualization.arrayToDataTable([
+          [
+            'Task', 'Hours per Day'
+          ],
+          [
+            'Green <%= @batch.percentages[:green] %> %', <%= @batch.percentages[:green] %>
+          ],
+          [
+            'Yellow <%= @batch.percentages[:yellow] %> %', <%= @batch.percentages[:yellow] %>
+          ],
+          ['Red <%= @batch.percentages[:red] %> %', <%= @batch.percentages[:red] %>]
+        ]);
 
-    <% @students.each do |student| %>
-    <div class="row">
-      <div class="col-md-7">
-        <h4><%= student.first_name %> <%= student.last_name %></h4>
-      </div>
-      <div class="avatar">
-        <%= link_to(image_tag(student.photo), batch_student_path(batch_id: @batch, id: student.id)) %>
-      </div>
-      <div class="col-md-3 right">
-        <%= link_to "View", batch_student_path(batch_id: @batch, id: student.id), class: "btn btn-default" %>
-      </div>
-    </div>
-    <% end %>
+        var options = {
+          title: 'Batch evaluation statistics',
+          colors: ['rgb(96, 230, 75)', 'rgb(238, 231, 63)', 'rgb(233, 47, 47)']
+        };
 
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </div>
   </div>
 
-</div>
+    <div class="row">
 
-<%= link_to "Back", batches_path, class: "btn btn-default" %>
-<%= link_to "Question", batch_question_path(@batch), class: "btn btn-primary" %>
-<%= link_to "Add a student", new_batch_student_url(@batch.id), class: "btn btn-primary" %>
-<%= link_to "Delete batch", batch_path(@batch.id), class: "btn btn-danger", data: { confirm: 'Are you sure?' }, method: :delete %>
+    <% @students.each do |student| %>
+      <div class="card">
+        <div class="img-window">
+          <img class="img-fluid"><%= link_to(image_tag(student.photo), batch_student_path(batch_id: @batch, id: student.id)) %></div>
+        <p class="card-text"><br/><b><%= link_to "#{student.name}", batch_student_path(batch_id: @batch, id: student.id) %></b></p>
+      </div>
+      <% end %>
+
+    </div>
+    <div class="text-center">
+      <p>
+          <%= link_to "Back", batches_path, class: "btn btn-default" %>
+          <%= link_to "Question", batch_question_path(@batch), class: "btn btn-primary" %>
+          <%= link_to "Add a student", new_batch_student_url(@batch.id), class: "btn btn-primary" %>
+          <%= link_to "Delete batch", batch_path(@batch.id), class: "btn btn-danger", data: { confirm: 'Are you sure?' }, method: :delete %>
+      </p>
+
+    </div>
+  </div>
+</div>
