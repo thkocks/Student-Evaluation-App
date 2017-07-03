@@ -26,6 +26,6 @@
 
   <div class="actions">
     <%= f.submit "Save", class: "btn btn-primary" %>
-    <%= link_to "Back", batch_student_path(batch_id: @student.batch.id, id: @student), class: "btn btn-default" %>
+    <%= link_to "Back", batch_path(batch_id: @batch), class: "btn btn-default" %>
   </div>
 <% end %>
