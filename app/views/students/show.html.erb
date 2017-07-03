@@ -1,5 +1,6 @@
 <div class="container">
-<h4>Evaluations</h4>
+
+  <h4>Evaluations</h4>
   <div class="tiles-container">
 
     <% if @student.evaluations.any?  %>
@@ -14,17 +15,64 @@
 </div>
 
 <div class="text-center">
-  <h3><%= @student.name %></h3>
-  <h4>Batch <%= @student.batch.number %></h4>
-  <p><%= image_tag(@student.photo) %></p>
-  <br/><br/><br/><br/>
+  <div class="card-center-container">
+
+    <div><div class="pie" <div id="piechart" style="width: 400px; height: 200px;"> <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages': ['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          [
+            'Task', 'Hours per Day'
+          ],
+          [
+            'Green <%= @student.percentages[:green] %> %', <%= @student.percentages[:green] %>
+          ],
+          [
+            'Yellow <%= @student.percentages[:yellow] %> %', <%= @student.percentages[:yellow] %>
+          ],
+          ['Red <%= @student.percentages[:red] %> %', <%= @student.percentages[:red] %>]
+        ]);
+
+        var options = {
+          title: 'Batch evaluation statistics',
+          colors: ['rgb(96, 230, 75)', 'rgb(238, 231, 63)', 'rgb(233, 47, 47)']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </div>
+  </div>
+
+<div class="card-center">
+  <div class="img-window">
+    <h3><%= @student.name %></h3>
+    <h4>Batch
+      <%= @student.batch.number %></h4>
+    <img class="img-fluid">
+
+    <p><%= image_tag(@student.photo) %></p>
+    </div>
+  </div>
+</div>
+</div>
+
+    <br/><br/><br/><br/>
+<div class="text-center">
 <p>
-  <%= link_to "Back", batches_path, class: "btn btn-default" %>
-  <%= link_to "Evaluate", new_batch_student_evaluation_path(batch_id: @student.batch.id, student_id: @student.id), class: "btn btn-primary" %>
-  <%= link_to "Edit", edit_batch_student_path(batch_id: @student.batch.id, id: @student.id), class: "btn btn-primary" %>
-  <%= link_to "Delete student", batch_student_path(batch_id: @student.batch.id, id: @student.id), :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger" %>
+<%= link_to "Back", batches_path, class: "btn btn-default" %>
+<%= link_to "Evaluate", new_batch_student_evaluation_path(batch_id: @student.batch.id, student_id: @student.id), class: "btn btn-primary" %>
+<%= link_to "Edit", edit_batch_student_path(batch_id: @student.batch.id, id: @student.id), class: "btn btn-primary" %>
+<%= link_to "Delete student", batch_student_path(batch_id: @student.batch.id, id: @student.id), :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger" %>
 </p>
 
+</div>
 </div>
 </div>
 </div>
